@@ -1,0 +1,65 @@
+# Waydroid Presence
+# Changes are applied live; invalid edits are logged and the last valid
+# configuration stays active.
+
+discord:
+  client_id: ""                  # required: Discord Developer Application ID
+  application_name: ""           # activity name override (Vesktop/Vencord only)
+  reconnect_interval: 10         # seconds between Discord IPC reconnect attempts
+  presence_refresh_interval: 15  # seconds between activity refreshes
+
+adb:
+  executable: /usr/bin/adb
+  device: auto                   # auto (only connected device) or a serial
+  timeout: 15                    # per-command timeout in seconds
+  reconnect: true                # auto-connect to adb.endpoint
+  reconnect_interval: 5
+  endpoint: ""                   # e.g. 192.168.240.112:5555
+
+presence:
+  poll_interval: 5               # seconds between foreground app checks
+  idle_behavior: clear           # clear | show_idle
+  unavailable_behavior: keep     # keep | clear
+  unavailable_clear_after: 30    # seconds without ADB before clearing; 0 = never
+  default_icon_key: waydroid     # fallback when no database entry or override exists
+  default_icon_text: Waydroid
+  show_package_name: true        # show the package ID in the state line
+  show_elapsed_time: true        # show the session timer
+  idle_details: Idle
+
+apps:
+  ignored_packages:
+    - com.android.launcher3
+
+  # Optional per-package overrides. Known packages already get their name and
+  # image from the application database; entries here win for every field they
+  # define. Inspect the database with --db-lookup, extend it with --db-set.
+  #
+  # custom:
+  #   com.aniplex.fategrandorder:
+  #     name: Fate/Grand Order JP
+  #     details: Playing Fate/Grand Order JP
+  #     state: Chaldea Security Organization
+  #     icon: fgo_jp                # Discord asset key or public https:// URL
+  #     large_text: Fate/Grand Order JP
+  #     # application_name: Fate/Grand Order JP  # Vesktop/Vencord only
+  #     # client_id: "123456789012345678"        # different Developer Application
+  #     # small_image: fgo_class
+  #     # small_text: Saber
+  #     # buttons:
+  #     #   - label: Official Website
+  #     #     url: https://example.com
+
+database:
+  # Look up unknown packages on the public Google Play listing (name + icon)
+  # and cache the result in the user database. Sends only the package name.
+  auto_lookup: true
+  timeout: 8                     # seconds per lookup
+  cooldown: 600                  # seconds before retrying a failed lookup
+
+runtime:
+  config_reload_interval: 3       # seconds between configuration file checks
+
+logging:
+  level: INFO                     # DEBUG | INFO | WARNING | ERROR
+  file: ~/.local/state/waydroid-presence/waydroid-presence.log

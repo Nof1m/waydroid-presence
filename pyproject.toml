@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "waydroid-presence"
+version = "0.6.0"
+description = "Unprivileged Discord Rich Presence integration for Waydroid using ADB"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0", "pypresence>=4.6"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+waydroid-presence = "waydroid_presence.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+waydroid_presence = ["data/*.json"]

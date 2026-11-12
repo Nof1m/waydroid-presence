@@ -1,0 +1,21 @@
+[Unit]
+Description=Waydroid Presence - Discord Rich Presence (user service)
+After=graphical-session.target
+
+[Service]
+Type=simple
+Environment=PYTHONPATH=@INSTALL_DIR@/src
+ExecStart=@INSTALL_DIR@/.venv/bin/python -m waydroid_presence.cli --config %h/.config/waydroid-presence/config.yaml
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=default.target
