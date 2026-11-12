@@ -263,5 +263,3 @@ Early development. Version 0.1.0 was tested by the project user on Arch Linux: D
 ## Licensing and upstream
 
 This project is distributed under the MIT License. See [LICENSE](LICENSE) for the full text.
-
-The original `MiKl-LS/waydroid-discord-rpc` repository does not include a LICENSE file; this project does not assume an upstream license beyond the MIT terms granted here.
