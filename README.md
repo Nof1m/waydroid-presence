@@ -5,6 +5,12 @@ Discord Rich Presence for Android applications running in Waydroid, using ADB.
 **Version:** 0.6.0  
 **Initial target:** Arch Linux x86_64. Designed to run as a normal desktop user, with no root daemon and no `sudo` during installation or operation.
 
+## Screenshots
+
+![Discord Rich Presence](screenshots/Screenshot_20261112_133834.png)
+
+![Discord Rich Presence](screenshots/Screenshot_20261113_111554.png)
+
 ## Zero-root principles
 
 - The Python daemon always runs as the logged-in user.
